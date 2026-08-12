@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Clarence James Saldana — Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --dark: #2d2d2d;
+    --accent: #5b9bd5;
+    --light-bg: #f5f6f8;
+    --border: #e0e3e8;
+    --text: #2d2d2d;
+    --muted: #6b7280;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: #ffffff;
+    line-height: 1.6;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    color: #fff;
+    padding: 72px 48px 64px;
+    text-align: center;
+  }
+
+  .hero img.logo {
+    height: 48px;
+    margin-bottom: 28px;
+    opacity: 0.85;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+    color: #5b9bd5;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  .hero p.bio {
+    max-width: 620px;
+    margin: 22px auto 0;
+    color: #cccccc;
+    font-size: 0.97rem;
+    line-height: 1.7;
+  }
+
+  .hero .contact-bar {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    color: #aaaaaa;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav a {
+    display: block;
+    padding: 16px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 72px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section.alt-bg {
+    max-width: 100%;
+    background: var(--light-bg);
+    padding: 72px 48px;
+  }
+
+  .section.alt-bg .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+
+  /* ── STATS ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 0;
+  }
+
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .stat-card .number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-card .label {
+    font-size: 0.83rem;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* ── PROJECT CARDS ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    transition: box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+  }
+
+  .project-card .card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    background: #e8edf2;
+  }
+
+  .project-card .card-body {
+    padding: 24px;
+  }
+
+  .project-card .card-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .project-card .card-tags {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-card .tag {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── PRODUCT IMAGE GALLERY ── */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .gallery img:first-child,
+  .gallery img:last-child {
+    grid-column: span 2;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  /* ── SYSTEM CARDS ── */
+  .system-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .system-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 24px;
+  }
+
+  .system-card .icon {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+  .system-card .icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #5b9bd5;
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .system-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .system-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .system-card .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .system-card .tool-tag {
+    background: #eef3f9;
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.74rem;
+    font-weight: 600;
+  }
+
+  /* ── SKILLS SECTION ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .skill-block {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+  }
+
+  .skill-block h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .skill-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .skill-block ul li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--light-bg);
+  }
+
+  .skill-block ul li:last-child { border-bottom: none; }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid var(--border);
+    margin-left: 12px;
+    padding-left: 28px;
+  }
+
+  .tl-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+
+  .tl-item:last-child { padding-bottom: 0; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .tl-dates {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 3px;
+  }
+
+  .tl-company {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .tl-title {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark);
+    color: #aaa;
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 0.88rem;
+  }
+
+  .footer strong { color: #fff; }
+
+  @media (max-width: 768px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .project-grid { grid-template-columns: 1fr; }
+    .system-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .hero { padding: 48px 24px; }
+    .section { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Clarence James T. Saldana</h1>
+  <div class="subtitle">Operations &nbsp;·&nbsp; Automation &nbsp;·&nbsp; Growth</div>
+  <p class="bio">
+    I'm an operations professional who doesn't just manage processes — I build them from scratch.
+    At Push Print, I joined as the sole full-time operator of a US-based e-commerce startup and built everything:
+    the website, the automation systems, the creative pipeline, the sales team, and the vendor infrastructure —
+    all while keeping the business running day-to-day.
+    8+ years of experience across BPO, logistics, and digital operations.
+    This portfolio is a record of that work.
+  </p>
+  <div class="contact-bar">
+    <span>0921 690 1912</span>
+    <span>clarence.saldana@gmail.com</span>
+    <span><a href="https://linkedin.com/in/cjsaldana" target="_blank" style="color:#aaaaaa;">LinkedIn</a></span>
+    <span>Bacoor, Cavite, Philippines</span>
+    <span>Open to Remote &amp; On-site</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">Overview</a>
+  <a href="#experience">Experience</a>
+  <a href="#landing-pages">Landing Pages</a>
+  <a href="#video">Video</a>
+  <a href="#ai-images">Creative Work</a>
+  <a href="#automation">Automation</a>
+  <a href="#skills">Skills</a>
+</nav>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section">
+  <div class="section-label">At a Glance</div>
+  <div class="section-title">What I Built at Push Print</div>
+  <div class="section-desc">
+    As the sole full-time operator, I was responsible for everything — website, design, automation, outreach, vendor management, and analytics. I also handled talent acquisition and managed teams across sales, creative, and web development. Here's what that looks like in numbers.
+  </div>
+  <div class="stats">
+    <div class="stat-card">
+      <div class="number">334</div>
+      <div class="label">Active products managed on the e-commerce platform</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">3</div>
+      <div class="label">Marketing landing pages designed and published</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">5+</div>
+      <div class="label">End-to-end automation systems built and deployed</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">3+</div>
+      <div class="label">Managed a team of salespeople, web developers, and designers</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="alt-bg">
+  <div class="inner section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-label">Background</div>
+    <div class="section-title">Work History</div>
+    <div class="section-desc">Push Print is the most recent chapter — here's the career that led to it.</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dates">September 2025 – August 2026</div>
+        <div class="tl-company">Push Print</div>
+        <div class="tl-title">Head of Operations &nbsp;·&nbsp; Remote, US-based</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">December 2023 – November 2025</div>
+        <div class="tl-company">Valoroo Logistics</div>
+        <div class="tl-title">Logistics Manager &nbsp;·&nbsp; Remote, San Diego CA, USA</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">January 2023 – September 2023</div>
+        <div class="tl-company">Foundever Philippines – ATC</div>
+        <div class="tl-title">QuickBooks Online Support Specialist &nbsp;·&nbsp; Muntinlupa, Metro Manila</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">September 2020 – September 2022</div>
+        <div class="tl-company">Amazon Operations PH</div>
+        <div class="tl-title">Quality Analyst &amp; Customer Service Representative &nbsp;·&nbsp; Pasay City</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">March 2017 – August 2019</div>
+        <div class="tl-company">ePerformax Contact Centers</div>
+        <div class="tl-title">Product &amp; Communications Trainer &nbsp;·&nbsp; Pasay City</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LANDING PAGES -->
+<div id="landing-pages" class="alt-bg">
+  <div class="inner section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-label">Web Design</div>
+    <div class="section-title">Marketing Landing Pages</div>
+    <div class="section-desc">
+      Web work and print design produced for Push Print — built on the OnPrintShop CMS platform with tailored copy, product photography, and clear calls-to-action. The mailers subdomain is a collaborative build with the company owner.
+    </div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <a href="https://www.pushprint.com/cms.php?page=marketing_landing_style_one" target="_blank">
+          <img src="portfolio-assets/landing_home_services.png" alt="Home Services Landing Page" class="card-img"/>
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Landing Page</div>
+          <h3>Home Services — Starter Kit</h3>
+          <p>Targeted lawn care, roofing, HVAC, painting, and other trade businesses. Featured a product bundle offer with lifestyle imagery and urgency-driven copy.</p>
+          <div class="card-tags">
+            <span class="tag">OnPrintShop CMS</span>
+            <span class="tag">Bootstrap 4</span>
+            <span class="tag">Froala Editor</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+          <a href="https://www.pushprint.com/cms.php?page=marketing_landing_style_one" target="_blank" style="display:inline-block; margin-top:14px; font-size:0.82rem; font-weight:600; color:var(--accent);">View Live Page →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <a href="https://mailers.pushprint.com" target="_blank">
+          <img src="portfolio-assets/mailers_pushprint.png" alt="mailers.pushprint.com" class="card-img"/>
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Collaborative Project</div>
+          <h3>mailers.pushprint.com</h3>
+          <p>Co-built with the company owner — a dedicated subdomain for Push Print's direct mail and EDDM services. Handled operational setup, content management, and platform integration as part of the broader growth strategy.</p>
+          <div class="card-tags">
+            <span class="tag">Subdomain</span>
+            <span class="tag">Direct Mail</span>
+            <span class="tag">EDDM</span>
+            <span class="tag">Co-built with Company Owner</span>
+          </div>
+          <a href="https://mailers.pushprint.com" target="_blank" style="display:inline-block; margin-top:14px; font-size:0.82rem; font-weight:600; color:var(--accent);">View Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card" style="grid-column: span 2;">
+        <img src="portfolio-assets/eddm_design_inside.png" alt="EDDM Mailer Inside Panel Design" class="card-img" style="height:300px; object-position:center;"/>
+        <div class="card-body">
+          <div class="card-tag">Print Design</div>
+          <h3>EDDM Mailer — Inside Layout Design</h3>
+          <p>Full interior spread of a half-fold EDDM direct mail piece — services grid, pricing packages, team section, testimonials, and a CTA offer callout. Designed to convert neighborhood prospects into first-time customers.</p>
+          <div class="card-tags">
+            <span class="tag">Print Design</span>
+            <span class="tag">Half-Fold Layout</span>
+            <span class="tag">EDDM</span>
+            <span class="tag">AI-Assisted</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div id="video" class="alt-bg">
+  <div class="inner section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-label">Content Production</div>
+    <div class="section-title">Landing Page Campaign Video</div>
+    <div class="section-desc">
+      Created for Push Print's home services campaign targeting local trade businesses — lawn care, HVAC, roofing, and more.
+      I handled the full production workflow end-to-end: scripting, editing, and recording the voiceover narration.
+      The video was built to support the landing page and drive conversions for the EDDM and door hanger product lines.
+    </div>
+    <div style="position:relative; width:100%; max-width:800px; margin:0 auto; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.13); background:#000;">
+      <video
+        controls
+        width="100%"
+        style="display:block; max-height:500px; background:#000;"
+      >
+        <source src="portfolio-assets/campaign_video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;">
+      <span class="tag" style="background:var(--light-bg); border:1px solid var(--border); border-radius:4px; padding:3px 9px; font-size:0.75rem; color:var(--muted); font-weight:500;">Video Editing</span>
+      <span class="tag" style="background:var(--light-bg); border:1px solid var(--border); border-radius:4px; padding:3px 9px; font-size:0.75rem; color:var(--muted); font-weight:500;">Voiceover</span>
+      <span class="tag" style="background:var(--light-bg); border:1px solid var(--border); border-radius:4px; padding:3px 9px; font-size:0.75rem; color:var(--muted); font-weight:500;">Content Production</span>
+      <span class="tag" style="background:var(--light-bg); border:1px solid var(--border); border-radius:4px; padding:3px 9px; font-size:0.75rem; color:var(--muted); font-weight:500;">Marketing Campaign</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT IMAGERY -->
+<div id="ai-images" class="section">
+  <div class="section-label">Creative Work</div>
+  <div class="section-title">Product Photography &amp; Creative Imagery</div>
+  <div class="section-desc">
+    All product imagery on pushprint.com was created and managed by me — no external agency, no stock photos, no photographer.
+    Each image is a mix of AI generation (Higgsfield, Gemini, Flux) and hands-on editing through tools like Adobe, Canva, Procreate, and Infinite Painter.
+    The goal was always the same: photorealistic, lifestyle-first visuals that sell the product at a glance.
+  </div>
+
+  <div class="gallery">
+    <img src="portfolio-assets/prod_bc_standard.jpeg" alt="Standard Business Cards — desk lifestyle scene"/>
+    <img src="portfolio-assets/prod_postcard_standard.png" alt="Standard Postcard — Ponce Dental Studio flat lay"/>
+    <img src="portfolio-assets/prod_door_hanger.png" alt="Door Hanger — Lawn Care Services on door"/>
+    <img src="portfolio-assets/prod_table_tent.png" alt="5x5.5 Table Tent — Daily Specials restaurant scene"/>
+    <img src="portfolio-assets/prod_eddm_livingroom.png" alt="EDDM Mailer — Nexus Computers, woman reading on couch"/>
+    <img src="portfolio-assets/prod_eddm_campaign.png" alt="EDDM campaign — lawn care contractor by truck"/>
+  </div>
+
+  <div style="margin-top: 32px; background: var(--light-bg); border-radius: 10px; padding: 28px 32px;">
+    <strong style="font-size:0.9rem; color: var(--dark);">Tools used across this work:</strong>
+    <p style="font-size:0.9rem; color: var(--muted); margin-top:8px; line-height:1.7;">
+      AI generation: Higgsfield, Google Gemini, Flux (Black Forest Labs) — for photorealistic lifestyle renders and scene composition.
+      Manual editing and design: Adobe suite, Canva, Procreate, Infinite Painter — for refinement, layout, typography, and finishing.
+      Each image went through at least one manual pass before going live.
+    </p>
+  </div>
+</div>
+
+<!-- AUTOMATION SYSTEMS -->
+<div id="automation" class="alt-bg">
+  <div class="inner section" style="padding-top:0; padding-bottom:0;">
+    <div class="section-label">Systems &amp; Automation</div>
+    <div class="section-title">Operational Infrastructure Built from Scratch</div>
+    <div class="section-desc">
+      Every system below was designed, built, tested, and deployed independently — with no engineering team. These automations handle lead generation, order management, sales, and real-time alerting.
+    </div>
+
+    <div class="system-grid">
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+        <h3>Cold Outreach System</h3>
+        <p>End-to-end lead generation pipeline — Apollo prospecting, Smartlead email sequencing, and GoHighLevel CRM for pipeline management and follow-up automation.</p>
+        <div class="tools">
+          <span class="tool-tag">Apollo</span>
+          <span class="tool-tag">Smartlead</span>
+          <span class="tool-tag">GoHighLevel</span>
+          <span class="tool-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Order Automation Pipeline</h3>
+        <p>Automated order status sync between the print supplier (4over) and the OnPrintShop platform. Auto-closes completed orders and archives them — runs on a nightly schedule.</p>
+        <div class="tools">
+          <span class="tool-tag">Playwright</span>
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">LaunchAgent</span>
+          <span class="tool-tag">4over API</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <h3>Real-Time Operations Alerts</h3>
+        <p>Telegram-based alerting system for new orders, status changes, and anomaly detection. Keeps the owner informed in real time without logging into the admin dashboard.</p>
+        <div class="tools">
+          <span class="tool-tag">Telegram Bot API</span>
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">BigQuery</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <h3>AI Proposal Generator</h3>
+        <p>Automated client proposal builder — scrapes the prospect's website, detects business type, generates branded product images with the client's logo, and assembles a full HTML proposal.</p>
+        <div class="tools">
+          <span class="tool-tag">Gemini Multimodal</span>
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Playwright</span>
+          <span class="tool-tag">HTML</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+        <h3>Social &amp; Ads Pipeline</h3>
+        <p>Integrated Meta API across Facebook, Instagram, and paid ads. Automated image generation → caption writing → draft review → posting workflow, with platform-specific formatting.</p>
+        <div class="tools">
+          <span class="tool-tag">Meta API</span>
+          <span class="tool-tag">Higgsfield</span>
+          <span class="tool-tag">Gemini</span>
+          <span class="tool-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <h3>AI Image Generation Pipeline</h3>
+        <p>Multi-model creative production system producing lifestyle product photography at scale. Integrated directly into the social and ad creative workflow for same-day turnaround.</p>
+        <div class="tools">
+          <span class="tool-tag">Higgsfield</span>
+          <span class="tool-tag">Gemini API</span>
+          <span class="tool-tag">Flux</span>
+          <span class="tool-tag">Python</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">Core Skills &amp; Tools</div>
+  <div class="section-desc">A full-stack operator with both strategic and hands-on technical skills across operations, marketing, and automation.</div>
+
+  <div class="skills-grid">
+    <div class="skill-block">
+      <h4>Operations &amp; CRM</h4>
+      <ul>
+        <li>GoHighLevel CRM</li>
+        <li>OnPrintShop (334 products)</li>
+        <li>QuickBooks Online</li>
+        <li>BigQuery Analytics</li>
+        <li>Meta Ads Manager</li>
+        <li>Vendor &amp; Supplier Management</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>AI &amp; Automation</h4>
+      <ul>
+        <li>Google Gemini API</li>
+        <li>Higgsfield Image/Video AI</li>
+        <li>Flux (Black Forest Labs)</li>
+        <li>Playwright Browser Automation</li>
+        <li>Python Scripting</li>
+        <li>Workflow &amp; Pipeline Design</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Growth &amp; Outreach</h4>
+      <ul>
+        <li>Smartlead Email Sequencing</li>
+        <li>Apollo Prospecting</li>
+        <li>Cold Call Team Management</li>
+        <li>Landing Page Development</li>
+        <li>Social Media Automation</li>
+        <li>CDN &amp; Image Management</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Training &amp; QA</h4>
+      <ul>
+        <li>Communications Training</li>
+        <li>Curriculum Development</li>
+        <li>Call Quality Monitoring</li>
+        <li>KPI Calibration</li>
+        <li>BPO Agent Coaching</li>
+        <li>American English (Fluent)</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Customer Service</h4>
+      <ul>
+        <li>Inbound &amp; Outbound Voice</li>
+        <li>Email &amp; Ticket Support</li>
+        <li>Escalation Management</li>
+        <li>Amazon &amp; QuickBooks Support</li>
+        <li>North American &amp; UK Accounts</li>
+        <li>High-Volume Contact Centers</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h4>Logistics &amp; Coordination</h4>
+      <ul>
+        <li>Team Leadership</li>
+        <li>Route Planning &amp; Dispatch</li>
+        <li>Load Documentation</li>
+        <li>Carrier Communication</li>
+        <li>Billing Accuracy</li>
+        <li>Process Improvement</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT CTA -->
+<div style="background: #2d2d2d; padding: 64px 24px; text-align: center;">
+  <div style="max-width: 640px; margin: 0 auto;">
+    <div style="font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #5b9bd5; margin-bottom: 14px;">Let's Work Together</div>
+    <h2 style="font-size: 2rem; font-weight: 700; color: #ffffff; margin: 0 0 16px;">Looking for an operator who builds, not just manages?</h2>
+    <p style="font-size: 1rem; color: #adb5bd; line-height: 1.7; margin-bottom: 32px;">
+      I'm open to remote and on-site roles in operations, training, and customer service leadership.
+      If what you see here fits what you're looking for, reach out directly — I respond fast.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:clarence.saldana@gmail.com" style="display: inline-block; background: #5b9bd5; color: #ffffff; font-weight: 700; font-size: 0.9rem; padding: 14px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.3px;">Email Me</a>
+      <a href="CJSaldana_Resume_2026.pdf" download style="display: inline-block; background: transparent; color: #ffffff; font-weight: 700; font-size: 0.9rem; padding: 14px 28px; border-radius: 8px; text-decoration: none; border: 2px solid rgba(255,255,255,0.25); letter-spacing: 0.3px;">Download Resume</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Clarence James T. Saldana</strong><br/>
+  0921 690 1912 &nbsp;·&nbsp; clarence.saldana@gmail.com &nbsp;·&nbsp; <a href="https://linkedin.com/in/cjsaldana" target="_blank" style="color:#aaaaaa;">LinkedIn</a> &nbsp;·&nbsp; Bacoor, Cavite, Philippines<br/>
+  <span style="margin-top:8px; display:block;">Open to remote and on-site opportunities in Operations, Training, and Customer Service Leadership.</span>
+</div>
+
+</body>
+</html>
