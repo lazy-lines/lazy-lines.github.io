@@ -431,9 +431,22 @@
     .project-grid { grid-template-columns: 1fr; }
     .system-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
-    .gallery { grid-template-columns: repeat(2, 1fr); }
-    .hero { padding: 48px 24px; }
-    .section { padding: 48px 24px; }
+    .gallery { grid-template-columns: 1fr 1fr; }
+    .gallery img:first-child,
+    .gallery img:last-child { grid-column: span 2; }
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero .subtitle { font-size: 0.85rem; letter-spacing: 1.5px; }
+    .hero p.bio { font-size: 0.9rem; }
+    .hero .contact-bar { gap: 12px; font-size: 0.82rem; }
+    .section { padding: 40px 20px; }
+    .section.alt-bg { padding: 40px 20px; }
+    .section-title { font-size: 1.5rem; }
+    .nav { overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+    .nav a { padding: 14px 14px; font-size: 0.75rem; white-space: nowrap; }
+    .timeline { flex-direction: column; gap: 16px; }
+    .tl-item { min-width: unset; }
+    .stat-card .number { font-size: 1.8rem; }
   }
 </style>
 </head>
